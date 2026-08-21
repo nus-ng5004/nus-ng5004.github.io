@@ -237,24 +237,42 @@ a { color: inherit; text-decoration: none; }
 }
 .materials__empty { color: rgba(255,255,255,.55); font-size: .96rem; padding: 1rem 0; }
 
-/* slide download rows */
-.slides { list-style: none; max-width: 34rem; }
+/* material rows: one per week, holding one or more resource chips */
+.slides { list-style: none; max-width: 46rem; }
 .slide {
   display: flex; align-items: center; justify-content: space-between; gap: 1.2rem;
-  padding: 1rem .4rem; border-bottom: 1px solid rgba(255,255,255,.09);
+  padding: 1.05rem .4rem; border-bottom: 1px solid rgba(255,255,255,.09);
 }
 .slide__wk {
-  font-family: var(--mono); font-weight: 500; font-size: 1.02rem;
+  flex-shrink: 0; font-family: var(--mono); font-weight: 500; font-size: 1.02rem;
   color: rgba(255,255,255,.92);
 }
-.slide__dl {
-  flex-shrink: 0; display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--display); font-weight: 500; font-size: .9rem; color: #fff;
-  background: var(--nus-orange); padding: .5rem .95rem; border-radius: 999px;
-  transition: background .18s ease, transform .18s ease;
+.slide__res { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .6rem; }
+
+/* a single downloadable / viewable resource */
+.res {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .5rem .95rem; border-radius: 999px;
+  font-family: var(--display); font-weight: 500; font-size: .9rem;
+  border: 1px solid transparent;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
 }
-.slide__dl:hover { background: var(--orange-400); transform: translateY(-1px); }
-.slide__ext { font-family: var(--mono); font-size: .72rem; opacity: .85; }
+.res:hover { transform: translateY(-1px); }
+.res__icon { width: 16px; height: 16px; flex-shrink: 0; }
+.res__meta { font-family: var(--mono); font-size: .7rem; opacity: .8; }
+
+/* prepared teaching material */
+.res--primary { background: var(--nus-orange); color: #fff; }
+.res--primary:hover { background: var(--orange-400); }
+
+/* artefacts from the session itself */
+.res--secondary {
+  color: var(--orange-400);
+  border-color: rgba(239, 124, 0, .45);
+  background: rgba(239, 124, 0, .08);
+}
+.res--secondary:hover { border-color: var(--orange-400); background: rgba(239, 124, 0, .16); }
+
 .slides__empty { color: rgba(255,255,255,.55); font-size: .96rem; padding: 1rem 0; }
 
 /* ---------- Footer ---------- */
@@ -279,6 +297,9 @@ a { color: inherit; text-decoration: none; }
 /* let long names wrap instead of clipping on very narrow screens */
 @media (max-width: 560px) {
   .person__name { white-space: normal; }
+  /* stack the week label above its resource chips */
+  .slide { flex-direction: column; align-items: flex-start; gap: .7rem; }
+  .slide__res { justify-content: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {

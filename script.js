@@ -4,25 +4,64 @@
 (function () {
   "use strict";
 
-  /* ---------- Session slides ----------
-     Add one entry per week as decks are posted. Put the file in slides/ and
-     point `file` at it. Remove an entry to hide it. Newest can go on top. */
-  const SLIDES = [
-    { week: "Week 1", file: "slides/ng5004-week01.pptx", ext: "PPTX" },
+  /* ---------- Session materials ----------
+     One entry per week; each week holds any number of files. Put the file in
+     slides/ and point `file` at it.
+       kind   — what the file is, shown on the chip
+       ext    — format badge (PPTX, PDF, …)
+       size   — human-readable, so nobody is surprised by a big download
+       action — "download" forces a save; "view" opens in a new tab (PDFs and
+                images render natively in the browser, decks do not). */
+  const MATERIALS = [
+    {
+      week: "Week 1",
+      items: [
+        { kind: "Slides", file: "slides/ng5004-week01.pptx", ext: "PPTX", size: "8.0 MB", action: "download" },
+      ],
+    },
+    {
+      week: "Week 2",
+      items: [
+        { kind: "Slides", file: "slides/ng5004-week02.pptx", ext: "PPTX", size: "8.0 MB", action: "download" },
+        { kind: "Discussion notes", file: "slides/week02-notes-in-class_small.pdf", ext: "PDF", size: "4.0 MB", action: "view" },
+      ],
+    },
   ];
 
-  const slidesList = document.getElementById("slidesList");
-  if (slidesList) {
-    if (SLIDES.length === 0) {
-      slidesList.innerHTML =
-        '<li class="slides__empty">Slides will be posted here after each session.</li>';
+  const ICON_DOWNLOAD =
+    '<svg class="res__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4"/><path d="M5 19h14"/></svg>';
+  const ICON_VIEW =
+    '<svg class="res__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m4 17 5-5 4 4 3-2 4 4"/></svg>';
+
+  const materialsList = document.getElementById("slidesList");
+  if (materialsList) {
+    if (MATERIALS.length === 0) {
+      materialsList.innerHTML =
+        '<li class="slides__empty">Materials will be posted here after each session.</li>';
     } else {
-      slidesList.innerHTML = SLIDES.map(function (s) {
+      materialsList.innerHTML = MATERIALS.map(function (wk) {
+        const chips = wk.items
+          .map(function (it) {
+            const isView = it.action === "view";
+            const attrs = isView
+              ? ' target="_blank" rel="noopener"'
+              : " download";
+            const hint = isView ? " (opens in a new tab)" : " (downloads)";
+            return (
+              '<a class="res' + (isView ? " res--secondary" : " res--primary") + '"' +
+              ' href="' + it.file + '"' + attrs +
+              ' title="' + it.kind + " — " + it.ext + ", " + it.size + hint + '">' +
+              (isView ? ICON_VIEW : ICON_DOWNLOAD) +
+              '<span class="res__kind">' + it.kind + "</span>" +
+              '<span class="res__meta">' + it.ext + " · " + it.size + "</span>" +
+              "</a>"
+            );
+          })
+          .join("");
         return (
           '<li class="slide">' +
-          '<span class="slide__wk">' + s.week + "</span>" +
-          '<a class="slide__dl" href="' + s.file + '" download>' +
-          "Download <span class=\"slide__ext\">" + (s.ext || "FILE") + "</span></a>" +
+          '<span class="slide__wk">' + wk.week + "</span>" +
+          '<span class="slide__res">' + chips + "</span>" +
           "</li>"
         );
       }).join("");
