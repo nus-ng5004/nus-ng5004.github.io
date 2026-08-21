@@ -212,6 +212,25 @@ a { color: inherit; text-decoration: none; }
 }
 .week__body h3 { font-size: 1.2rem; }
 
+/* sub-points under a session: case studies, speakers, readings */
+.week__body ul { list-style: none; margin-top: .6rem; display: flex; flex-direction: column; gap: .35rem; }
+.week__body li {
+  position: relative; padding-left: 1.05rem;
+  color: var(--slate); font-size: .95rem; line-height: 1.55;
+}
+.week__body li::before {
+  content: ""; position: absolute; left: 0; top: .72em;
+  width: 6px; height: 1px; background: var(--nus-orange); opacity: .75;
+}
+/* links must look like links — they were inheriting body ink with no underline */
+.week__body a {
+  color: var(--nus-blue); font-weight: 500;
+  text-decoration: underline; text-decoration-thickness: 1px;
+  text-decoration-color: rgba(0, 61, 124, .32); text-underline-offset: 3px;
+  transition: color .16s ease, text-decoration-color .16s ease;
+}
+.week__body a:hover { color: var(--nus-orange); text-decoration-color: var(--nus-orange); }
+
 /* progressively warmer nodes down the timeline */
 .week:nth-of-type(n+9)::before { border-color: var(--blue-600); }
 .week:nth-of-type(n+14)::before { border-color: var(--nus-orange); }
@@ -236,6 +255,26 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: .8rem; margin-bottom: .4rem; border-bottom: 1px solid rgba(255,255,255,.14);
 }
 .materials__empty { color: rgba(255,255,255,.55); font-size: .96rem; padding: 1rem 0; }
+
+/* reading lists on the dark panel — :not(.slides) keeps the resource chips out of this */
+.materials__block ul:not(.slides) {
+  list-style: none; display: flex; flex-direction: column; gap: .55rem; padding: .2rem 0 .4rem;
+}
+.materials__block ul:not(.slides) li {
+  position: relative; padding-left: 1.05rem;
+  color: rgba(255, 255, 255, .8); font-size: .98rem; line-height: 1.55;
+}
+.materials__block ul:not(.slides) li::before {
+  content: ""; position: absolute; left: 0; top: .72em;
+  width: 6px; height: 1px; background: var(--orange-400); opacity: .8;
+}
+.materials__block ul:not(.slides) a {
+  color: var(--orange-400);
+  text-decoration: underline; text-decoration-thickness: 1px;
+  text-decoration-color: rgba(255, 154, 51, .4); text-underline-offset: 3px;
+  transition: text-decoration-color .16s ease;
+}
+.materials__block ul:not(.slides) a:hover { text-decoration-color: var(--orange-400); }
 
 /* material rows: one per week, holding one or more resource chips */
 .slides { list-style: none; max-width: 46rem; }
