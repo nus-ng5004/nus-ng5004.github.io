@@ -49,12 +49,13 @@
         const chips = wk.items
           .map(function (it) {
             const isView = it.action === "view";
+            const isPrimary = it.kind === "Slides";
             const attrs = isView
               ? ' target="_blank" rel="noopener"'
               : " download";
             const hint = isView ? " (opens in a new tab)" : " (downloads)";
             return (
-              '<a class="res' + (isView ? " res--secondary" : " res--primary") + '"' +
+              '<a class="res' + (isPrimary ? " res--primary" : " res--secondary") + '"' +
               ' href="' + it.file + '"' + attrs +
               ' title="' + it.kind + " — " + it.ext + ", " + it.size + hint + '">' +
               (isView ? ICON_VIEW : ICON_DOWNLOAD) +
