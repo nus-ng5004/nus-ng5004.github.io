@@ -26,6 +26,12 @@
         { kind: "Discussion notes", file: "slides/week02-notes-in-class_small.pdf", ext: "PDF", size: "4.0 MB", action: "view" },
       ],
     },
+    {
+      week: "Week 3",
+      items: [
+        { kind: "Slides", file: "slides/ng5004-week03-AutoCodeRover.pdf", ext: "PDF", size: "4.7 MB", action: "view" },
+      ],
+    },
   ];
 
   const ICON_DOWNLOAD =
