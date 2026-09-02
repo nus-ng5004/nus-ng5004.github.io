@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
   <a class="skip-link" href="#about">Skip to content</a>
@@ -21,6 +21,7 @@
       <span class="nav__short">AI-driven Innovation</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
+      <a href="#announcements">Updates</a>
       <a href="#about">About</a>
       <a href="#people">People</a>
       <a href="#pathway">Schedule</a>
@@ -76,6 +77,17 @@
   </section>
 
   <main>
+    <!-- ANNOUNCEMENTS -->
+    <section class="announcements" id="announcements" aria-labelledby="announcements-title">
+      <article class="announcement">
+        <h2 id="announcements-title">Announcements</h2>
+        <p>
+          For Week 4 on Friday, 4 September, class will be held from 1:00–3:00 PM in the
+          <strong>Executive Classroom, COM2 Level 4</strong>, instead of BIZ2-0202.
+        </p>
+      </article>
+    </section>
+
     <!-- ABOUT -->
     <section class="section about" id="about">
       <div class="section__head">
@@ -133,7 +145,7 @@
     <section class="section pathway" id="pathway">
       <div class="section__head">
         <h2 class="section__title">Weekly schedule</h2>
-        <p class="section__sub">Every session runs Fridays, 1:00–3:00 PM at BIZ2-0202.</p>
+        <p class="section__sub">Every session runs Fridays, 1:00–3:00 PM at BIZ2-0202, unless noted below.</p>
       </div>
 
       <ol class="timeline" aria-label="Weekly schedule">
@@ -175,10 +187,11 @@
             </ul>
           </div>
         </li>
-        <li class="week">
+        <li class="week week--notice" id="week-4">
           <span class="week__no">W4</span>
           <div class="week__body">
             <span class="week__date">Fri · 4 Sep</span>
+            <p class="week__venue"><span>Venue change</span> Executive Classroom · COM2 Level 4</p>
             <h3> Funding model — visit by VCs
             </h3>
             <ul>
