@@ -32,6 +32,12 @@
         { kind: "Slides", file: "slides/ng5004-week03-AutoCodeRover.pdf", ext: "PDF", size: "4.7 MB", action: "view" },
       ],
     },
+    {
+      week: "Week 7",
+      items: [
+        { kind: "Slides", file: "slides/ng5004-week07.pptx", ext: "PPTX", size: "40 KB", action: "download" },
+      ],
+    },
   ];
 
   const ICON_DOWNLOAD =
