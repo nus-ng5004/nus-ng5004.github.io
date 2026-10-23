@@ -38,6 +38,12 @@
         { kind: "Slides", file: "slides/ng5004-week07.pptx", ext: "PPTX", size: "40 KB", action: "download" },
       ],
     },
+    {
+      week: "Week 9",
+      items: [
+        { kind: "Slides", file: "NGRIP-info.pdf", ext: "pdf", size: "40 KB", action: "download" },
+      ],
+    },
   ];
 
   const ICON_DOWNLOAD =
