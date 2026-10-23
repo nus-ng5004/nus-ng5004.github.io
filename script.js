@@ -41,7 +41,7 @@
     {
       week: "Week 9",
       items: [
-        { kind: "Slides", file: "NGRIP-info.pdf", ext: "pdf", size: "40 KB", action: "download" },
+        { kind: "Slides", file: "NGRIP info.pdf", ext: "pdf", size: "40 KB", action: "download" },
       ],
     },
   ];
